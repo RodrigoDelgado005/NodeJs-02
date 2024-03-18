@@ -1,5 +1,4 @@
 const readline = require('readline');
-
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -12,23 +11,17 @@ rl.question('Ingrese la frase a traducir: ', (frase) => {
 });
 
 function traducirFrase(frase) {
-    const palabras = frase.split(' ');
-    const traducciones = palabras.map(palabra => traducirPalabra(palabra));
-    return traducciones.join(' ');
-}
-
-function traducirPalabra(palabra) {
     let traduccion = '';
-    for (let i = 0; i < palabra.length; i++) {
-        if ('aeiou'.includes(palabra[i])) {
-            traduccion += palabra[i] + 'p' + palabra[i];
+    for (let i = 0; i < frase.length; i++) {
+        const letra = frase.charAt(i);
+        if ('aeiou'.includes(letra)) {
+            traduccion += letra + 'p' + letra;
         } else {
-            traduccion += palabra[i];
+            traduccion += letra;
         }
     }
     return traduccion;
 }
-
 
 
 
